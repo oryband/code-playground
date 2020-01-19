@@ -84,10 +84,29 @@ def paint_skyline(skyline):
     return brushstrokes
 
 
+def paint_skyline_efficient(skyline):
+    # add brushstrokes for every two consequent towers,
+    # where the first one is higher than the second one
+    brushstrokes, height_diff = 0, 0
+    for tower in skyline:
+        brushstrokes += (height_diff - tower) if tower < height_diff else 0
+        height_diff = tower
+
+    # add the last tower height as brushstrokes
+    return brushstrokes + tower
+
+
+
 if __name__ == '__main__':
-    print(paint_skyline([1,3,2,1,2,1,5,3,3,4,2]), 'expected: 9')
-    print(paint_skyline([5,8]), 'expected: 8')
-    print(paint_skyline([9]), 'expected: 9')
-    print(paint_skyline([1,1,1,1]), 'expected: 1')
-    print(paint_skyline([1,1,1,1]), 'expected: 1')
+    # print(paint_skyline([1,3,2,1,2,1,5,3,3,4,2]), 'expected: 9')
+    print(paint_skyline_efficient([1,3,2,1,2,1,5,3,3,4,2]), 'expected: 9')
+
+    # print(paint_skyline([5,8]), 'expected: 8')
+    print(paint_skyline_efficient([5,8]), 'expected: 8')
+
+    # print(paint_skyline([9]), 'expected: 9')
+    print(paint_skyline_efficient([9]), 'expected: 9')
+
+    # print(paint_skyline([1,1,1,1]), 'expected: 1')
+    print(paint_skyline_efficient([1,1,1,1]), 'expected: 1')
 
