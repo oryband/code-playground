@@ -4,7 +4,7 @@ Given a set of characters and length 'k', print all possible permutations of wor
 at length k constructed from that character set.
 """
 
-def dfs(abc, k, perm):
+def perms(abc, k, perm):
     if k <= 0 or not abc:
         # print('edge case')  # DEBUG
         return
@@ -15,15 +15,15 @@ def dfs(abc, k, perm):
 
     for x in abc:
         perm += x
-        dfs(abc, k, perm)
+        perms(abc, k, perm)
         perm = perm[:-1]
 
 
 if __name__ == '__main__':
-    dfs({'a','b','c'}, 3, '')
+    perms({'a','b','c'}, 3, '')
 
     # edge cases
-    dfs({'a','b','c'}, -0, '')
-    dfs({'a','b','c'}, -1, '')
-    dfs({}, 3, '')
+    perms({'a','b','c'}, -0, '')
+    perms({'a','b','c'}, -1, '')
+    perms({}, 3, '')
 
