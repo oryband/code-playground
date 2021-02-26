@@ -9,7 +9,7 @@ pydocstyle = "*"
 pylint = "*"
 
 [packages]
-aiohttp = "==3.6.2"
+aiohttp = "==3.7.4"
 
 [requires]
 python_version = "3.8"
